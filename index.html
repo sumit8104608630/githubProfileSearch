@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 flex items-center">
+                <i class="fab fa-github mr-3 text-4xl"></i>
+                GitHub User Dashboard
+            </h1>
+        </header>
+
+        <!-- Search Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex  flex-col md:flex-row items-center">
+                <div class="w-full md:flex-1">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="search" 
+                            class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" 
+                            placeholder="Enter GitHub username"
+                        >
+                    </div>
+                </div>
+                <button 
+                    id="searchBtn"
+                    class="mt-4 md:mt-0 md:ml-4 px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section (Hidden initially) -->
+        <div id="results" class="hidden">
+            <!-- User Profile -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex flex-col md:flex-row items-center md:items-start">
+                    <div class="mb-6 md:mb-0 md:mr-8">
+                        <img id="userAvatar" src="" alt="User avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-gray-200">
+                        <a id="profileLink" href="#" target="_blank" class="block text-center mt-3 text-blue-600 hover:text-blue-800">
+                            View Profile
+                        </a>  
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-4">
+                            <div>
+                                <h2 id="userName" class="text-2xl font-bold text-gray-800">John Doe</h2>
+                                <p id="userLogin" class="text-gray-600">@johndoe</p>
+                                <p id="userBio" class="mt-2 text-gray-700">Passionate developer who loves creating useful applications.</p>
+                            </div>
+                            <div class="flex mt-4 md:mt-0">
+                                <div class="mr-6 text-center">
+                                    <div class="text-xl font-bold" id="followersCount">120</div>
+                                    <div class="text-gray-600">Followers</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-xl font-bold" id="followingCount">85</div>
+                                    <div class="text-gray-600">Following</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex flex-wrap">
+                            <div class="mr-4 mb-2 flex items-center">
+                                <i class="fas fa-map-marker-alt text-gray-600 mr-2"></i>
+                                <span id="userLocation">San Francisco, CA</span>
+                            </div>
+                            <div class="mr-4 mb-2 flex items-center">
+                                <i class="fas fa-building text-gray-600 mr-2"></i>
+                                <span id="userCompany">GitHub Inc.</span>
+                            </div>
+                            <div class="mb-2 flex items-center">
+                                <i class="fas fa-link text-gray-600 mr-2"></i>
+                                <a id="userWebsite" href="#" class="text-blue-600 hover:text-blue-800">johndoe.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repositories Section -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Repositories</h3>
+                
+                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" id="reposList">
+                    <!-- Repository cards will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- No Results Message (Hidden initially) -->
+        <div id="noResults" class="hidden bg-white rounded-lg shadow-md p-6 text-center">
+            <i class="fas fa-search text-gray-400 text-5xl mb-4"></i>
+            <p class="text-gray-600 text-lg">No user found. Please try another username.</p>
+        </div>
+
+        <!-- Loading Indicator (Hidden initially) -->
+        <div id="loading" class="hidden bg-white rounded-lg shadow-md p-12 text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-blue-600"></div>
+            <p class="mt-4 text-gray-600 text-lg">Searching...</p>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+</html>
